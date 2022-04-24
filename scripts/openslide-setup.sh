@@ -21,12 +21,30 @@
 # 1 Install dependencies
 sudo sed -i -e '2s/^/#/' /etc/apt/sources.list > /dev/null
 sudo apt-get update > /dev/null
-sudo apt-get install --yes libjpeg-dev \
-libpng12-dev liblcms2-dev libtiff-dev libpng-dev libz-dev \
-libopenjpeg-dev libopenjpeg5 libopenjpeg5-dbg openjpeg-tools \
-libcairo2-dev libglib2.0-dev libgtk2.0-dev libxml2-dev sqlite3 \
-libsqlite3-dev libopenblas-base openslide-tools pkg-config \
-python-software-properties ant python-pip 
+sudo apt-get install --yes libjpeg-dev 
+sudo apt-get install --yes libpng-dev
+sudo apt-get install --yes liblcms2-dev
+sudo apt-get install --yes libtiff-dev
+sudo apt-get install --yes libpng-dev
+sudo apt-get install --yes zlib1g-dev
+
+sudo apt update --yes
+sudo apt install --yes libjpeg-dev
+sudo apt install --yes libopenjp2-7
+sudo apt install --yes libopenjp2-7-dev
+sudo apt install --yes libtiff-dev
+sudo apt install --yes libcairo-dev
+sudo apt install --yes libglib-dev
+sudo apt install --yes libgtk2.0-dev
+sudo apt install --yes libxml2-dev
+sudo apt install --yes sqlite3
+sudo apt install --yes libsqlite3-dev
+sudo apt install --yes libopenblas-base
+sudo apt install --yes openslide-tools
+sudo apt install --yes pkg-config 
+sudo apt install --yes software-properties
+sudo apt install --yes ant 
+sudo apt install --yes python-pip 
 
 export JAVA_HOME='/usr/lib/jvm/default-java'
 

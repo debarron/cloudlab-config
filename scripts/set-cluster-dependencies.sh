@@ -8,8 +8,6 @@ SCALA_VER="2.11.8"
 
 ssh_command="
 # >> UPDATING REPOSITORIES AND PACKAGES..
-echo 'deb https://dl.bintray.com/sbt/debian /' | sudo tee -a /etc/apt/sources.list.d/sbt.list
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
 sudo apt-get update  --yes      # Fetches the list of available updates
 #sudo apt-get upgrade --yes     # Strictly upgrades the current packages
 #sudo apt-get dist-upgrade      # Installs updates (new ones)
@@ -32,6 +30,16 @@ sudo apt-get install sbt --yes
 # sudo apt-get autoremove --yes
 # sudo update-alternatives --config java
 # sudo update-alternatives --config javac
+
+
+sudo apt-get update
+sudo apt-get install apt-transport-https curl gnupg -yqq
+echo \"deb https://repo.scala-sbt.org/scalasbt/debian all main\" | sudo tee /etc/apt/sources.list.d/sbt.list
+echo \"deb https://repo.scala-sbt.org/scalasbt/debian /\" | sudo tee /etc/apt/sources.list.d/sbt_old.list
+curl -sL \"https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823\" | sudo -H gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/scalasbt-release.gpg --import
+sudo chmod 644 /etc/apt/trusted.gpg.d/scalasbt-release.gpg
+sudo apt-get update
+sudo apt-get install sbt
 
 # echo >> INSTALLING SCALA..
 sudo apt-get remove scala-library scala --yes
